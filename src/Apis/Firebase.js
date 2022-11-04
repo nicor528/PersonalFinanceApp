@@ -14,12 +14,12 @@ import {
     } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBnLKCwt2SzT7IHzH6Pt600hSMzekqPlbk",
-  authDomain: "personal-finance-app-6e15e.firebaseapp.com",
-  projectId: "personal-finance-app-6e15e",
-  storageBucket: "personal-finance-app-6e15e.appspot.com",
-  messagingSenderId: "41433705941",
-  appId: "1:41433705941:web:0af8cd6ad6563fc9e6215c"
+  apiKey: REACT_APP_apKey,
+  authDomain: REACT_APP_authDomain,
+  projectId: REACT_APP_projectId,
+  storageBucket: REACT_APP_storageBucket,
+  messagingSenderId: REACT_APP_messagingSenderId,
+  appId: REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);
