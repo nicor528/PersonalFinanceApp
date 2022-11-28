@@ -14,12 +14,12 @@ import {
     } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: REACT_APP_apKey,
-  authDomain: REACT_APP_authDomain,
-  projectId: REACT_APP_projectId,
-  storageBucket: REACT_APP_storageBucket,
-  messagingSenderId: REACT_APP_messagingSenderId,
-  appId: REACT_APP_appId
+    apiKey: process.env.REACT_APP_apKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);
@@ -39,24 +39,6 @@ export const getDB = new Promise((res,rej) => {
         rej(console.log("Error al traer los resultados", error))})
     }
 )
-
-export const getDBbyUser = async (user) =>{
-    const itemRef = await doc(DB,'resultados', user);
-    return(
-        new Promise((res, rej) =>{
-            getDoc(itemRef).then(snapshot =>{
-                if(snapshot.exists()){
-                    const resultados = snapshot.docs.map((rawDoc)=>{
-                        return{
-                            id: rawDoc.id,
-                            ...rawDoc.data()
-                        }
-                    })
-                    res(resultados)}
-            }).catch(error => rej(error) )
-        })
-    )
-}
 
 export const crearGasto = (gastos) => {
     const refCol = collection(DB, "Gastos")
@@ -83,6 +65,26 @@ export const crearIngreso = (ingreso) => {
     
     ) 
 }
+
+export const getDBbyUser = async (user) =>{
+    const itemRef = await doc(DB,'resultados', user);
+    return(
+        new Promise((res, rej) =>{
+            getDoc(itemRef).then(snapshot =>{
+                if(snapshot.exists()){
+                    const resultados = snapshot.docs.map((rawDoc)=>{
+                        return{
+                            id: rawDoc.id,
+                            ...rawDoc.data()
+                        }
+                    })
+                    res(resultados)}
+            }).catch(error => rej(error) )
+        })
+    )
+}
+
+
 
 
 
