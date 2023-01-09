@@ -4,7 +4,7 @@ export default function Consumos () {
 
 
     return(
-        <div>
+        <div className='agregar' >
             <Agregar>
             </Agregar>
         </div>

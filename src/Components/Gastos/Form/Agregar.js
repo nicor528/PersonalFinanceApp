@@ -76,6 +76,17 @@ function GridComplexExample() {
         <Form.Control id='gasto' type='text' placeholder="En que gastaste" />
       </Form.Group>
 
+      <div className="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+
       <Form.Group className="mb-3">
         <Form.Label>Costo</Form.Label>
         <Form.Control id='costo' type='number' placeholder="Cuanto gastasteeeeeeee" />

@@ -1,40 +1,18 @@
 import { obtenerGastosxMes, obtenerIngresosxMes } from "../Apis/Firebase copy"
 import {useContext, useEffect, useState} from 'react'
-import { async } from "@firebase/util";
 import { GastosContext } from "../Contexts/GastosContext";
 
 
 
-export default function Gastos2 () {
-
-    const {gastosData, setGastosData} = useContext(GastosContext)
-
-    const mes = "noviembre"
-    let TotalGastos = 0;
-
-    const [gastos, setGastos] = useState([])
-    const [ingresos, setIngresos] = useState([])
-
-    useEffect(() => {
-        async function data () {
-            await setGastosData(mes)
-            console.log(gastosData)
-        }
-        data();
-
-
-    },[])
-
-
-
-
+export default function Gastos2 ({gastos, mes}) {
 
 
     return(
         <div className='conteinerGastos' >
-            { (gastosData.length > 0)? gastosData.map((item) => {
+            <h3> Gastos en {mes} </h3>
+            { (gastos.length > 0)? gastos.map((item) => {
                 return(
-                    <h2> Gasto: {item.gasto} / Valor: {item.valor} </h2>
+                    <h6> Gasto: {item.gasto} / Valor: {item.valor} </h6>
                 )
             }) : <></> }
             <input type="button" value="click"></input>

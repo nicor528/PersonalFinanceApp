@@ -2,27 +2,18 @@ import { useContext, useEffect } from "react"
 import { IngresosContext } from "../Contexts/IngresosContext"
 
 
-export default function Ingresos2 () {
+export default function Ingresos2 ({ingresos, mes}) {
 
-    const {ingresosData, setIngresosData} = useContext(IngresosContext)
-
-    const mes = "noviembre"
-
-    useEffect(() => {
-        async function data ( ) {
-            await setIngresosData(mes)
-        }
-        data()
-    }, [])
 
     return(
         <div className='conteinerGastos' >
-        { (ingresosData.length > 0)? ingresosData.map((item) => {
-            return(
-                <h2> Ingreso: {item.ingreso} / Valor: {item.valor} </h2>
-            )
-        }) : <></> }
-        <input type="button" value="click"></input>
-    </div>
+            <h3> Ingresos en {mes} </h3>
+            { (ingresos.length > 0)? ingresos.map((item) => {
+                return(
+                    <h6> Ingreso: {item.ingreso} / Valor: {item.valor} </h6>
+                )
+            }) : <></> }
+            <input type="button" value="click"></input>
+        </div>
     )
 }
